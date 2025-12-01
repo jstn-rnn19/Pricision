@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricision - Manage Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"
+  />
+  <link rel="icon" href="images/Submark 1.png" />
+  <link rel="stylesheet" href="css/homepage/navbar.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  </head>
+<body>
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000">
+        <div class="toast-header">
+            <strong class="me-auto" id="toastHeader">Notification</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="toastBody"></div>
+        </div>
+</div>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-color fixed-top bg-dark">
+        <div class="container">
+        <a class="navbar-brand" href="homepage.html">
+            <img src="images/Secondary 1.png" alt="Logo" style="height: 40px; width: auto;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav nav-underline">
+            
+            <li class="nav-item"><a class="nav-link-grow" href="homepage.html">Home</a></li>
+            
+            <li class="nav-item dropdown">
+            <a class="nav-link-grow-drop dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Products
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="productsDropdown">
+                <li><a class="dropdown-item" href="add-product-homepage.html">Add New Product</a></li>
+                <li><a class="dropdown-item" href="edit-product.html">Edit Product Details/Recipe</a></li>
+            </ul>
+            </li>
+    
+            <li class="nav-item dropdown">
+            <a class="nav-link-grow-drop dropdown-toggle" href="#" id="materialsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Materials
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="materialsDropdown">
+                <li><a class="dropdown-item" href="add-material.html">Add New Material</a></li>
+                <li><a class="dropdown-item" href="manage-materials.html">Manage Material Costs</a></li>
+            </ul>
+            </li>
+    
+            <li class="nav-item">
+            <a class="nav-link-grow active" href="manage.html">Dashboard</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+            <a class="nav-link-grow-drop dropdown-toggle" href="#" id="helpDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Help
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="helpDropdown">
+                <li><a class="dropdown-item" href="homepage.html#how-pricision-works">How Pricision Works</a></li>
+                <li><a class="dropdown-item" href="homepage.html#aboutus">About Us</a></li>
+                <li><a class="dropdown-item" href="homepage.html#terms">Terms & Terminology</a></li>
+                <li><a class="dropdown-item" href="homepage.html#step-by-step">Step by Step</a></li>
+                <li><a class="dropdown-item" href="homepage.html#developer">Developers</a></li>
+            </ul>
+            </li>
+            
+        </ul>
+        </div>
+    </div>
+    </nav>
+</header>
+  
+    <div class="container py-5 manage">
+    <h2 class="mb-4 custom-top">Product Management Dashboard</h2>
+    <p>Review your calculated costs and final selling prices. Data is displayed in responsive cards.</p>
+        <div id="managementCardContainer" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    </div>
+    
+    <div id="noProducts" class="mt-5 alert alert-info d-none">No products have been added yet.</div>
+  </div>
+<footer class="text-center py-3 footer-bg text-white manage-material-footer">
+    <div class="container">
+        <p class="mb-0">© 2025 Pricision. All rights reserved.</p>
+        <a href="privacy.html" class="btn privacy-color btn-link">Privacy Policy</a>
+    </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // --- TOAST SETUP ---
+    const liveToastEl = document.getElementById('liveToast');
+    const toastHeaderEl = document.getElementById('toastHeader');
+    const toastBodyEl = document.getElementById('toastBody');
+    // Initialize the toast instance outside the function
+    const toastBootstrap = new bootstrap.Toast(liveToastEl, { delay: 3000 });
+    // --- END TOAST SETUP ---
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadManagementData();
+    });
+
+    function loadManagementData() {
+        const products = JSON.parse(localStorage.getItem('products')) || [];
+        const recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+        const cardContainer = document.getElementById('managementCardContainer');
+        const noProducts = document.getElementById('noProducts');
+        cardContainer.innerHTML = '';
+
+        if (products.length === 0) {
+            noProducts.classList.remove('d-none');
+            return;
+        }
+        noProducts.classList.add('d-none');
+
+        products.forEach(product => {
+            const recipe = recipes.find(r => String(r.productId) === String(product.id));
+
+            let cogs = 'N/A';
+            let price = 'N/A';
+            let status = 'Recipe Missing';
+            let statusColor = 'warning';
+
+            if (recipe && recipe.cogsPerUnit && recipe.sellingPrice) {
+                cogs = `₱${parseFloat(recipe.cogsPerUnit).toFixed(2)}`;
+                price = `₱${parseFloat(recipe.sellingPrice).toFixed(2)}`;
+                status = 'Ready';
+                statusColor = 'success';
+            }
+
+            // START: Card Structure Creation
+            const cardCol = document.createElement('div');
+            cardCol.className = 'col';
+
+            cardCol.innerHTML = `
+                <div class="card h-100 shadow-sm border-${statusColor}">
+                    <div class="card-header custom-bg">
+                        <h5 class="mb-0">${product.name}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <span class="fw-bold">Status:</span> 
+                            <span class="badge text-bg-${statusColor}">${status}</span>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <span class="fw-bold">Margin/Markup:</span> ${product.priceMethod === 'profitMargin' ? 'Margin' : 'Markup'} (${product.productMargin}%)
+                            </li>
+                            <li class="list-group-item">
+                                <span class="fw-bold">Material Cost per Unit:</span> 
+                                <strong class="text-danger">${cogs}</strong>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="fw-bold">Selling Price:</span> 
+                                <strong class="text-success fs-5">${price}</strong>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <button class="btn btn-sm btn-info edit-recipe-btn" data-id="${product.id}">Edit Recipe</button>
+                        <button class="btn btn-sm btn-outline-danger delete-btn" data-id="${product.id}">Delete</button>
+                    </div>
+                </div>
+            `;
+
+            cardContainer.appendChild(cardCol);
+            // END: Card Structure Creation
+        });
+
+        // Event listener for delete and edit actions (delegated to the container)
+        cardContainer.addEventListener('click', (e) => {
+            const target = e.target;
+            const id = target.getAttribute('data-id');
+            if (!id) return;
+
+            if (target.classList.contains('delete-btn')) {
+                if (confirm('Are you sure you want to delete this product and its recipe?')) {
+                    deleteProduct(id);
+                }
+            } else if (target.classList.contains('edit-recipe-btn')) {
+                localStorage.setItem('currentProductId', id);
+                window.location.href = `add-recipe-details.html?id=${id}`;
+            }
+        });
+    }
+
+    function deleteProduct(id) {
+        const deletedProduct = (JSON.parse(localStorage.getItem('products')) || []).find(p => String(p.id) === String(id));
+        const productName = deletedProduct ? deletedProduct.name : 'Product';
+
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+        products = products.filter(p => String(p.id) !== String(id));
+        localStorage.setItem('products', JSON.stringify(products));
+
+        let recipes = JSON.parse(localStorage.getItem('recipes')) || [];
+        recipes = recipes.filter(r => String(r.productId) !== String(id));
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+
+        showToast(`${productName} successfully deleted.`, 'danger');
+        loadManagementData(); // Reload cards
+    }
+
+    // 2. UPDATED function to show Toast (Replaces showAlert)
+    function showToast(message, type = 'info') {
+        let headerText = 'Notification';
+        let bgColor = 'text-bg-info'; // Default to info
+
+        if (type === 'success') {
+            headerText = 'Success';
+            bgColor = 'text-bg-success';
+        } else if (type === 'danger' || type === 'error') {
+            headerText = '  Success';
+            bgColor = 'text-bg-danger';
+        } else if (type === 'warning') {
+            headerText = 'Warning';
+            bgColor = 'text-bg-warning';
+        }
+
+        // Set content and class
+        toastHeaderEl.textContent = headerText;
+        toastBodyEl.textContent = message;
+
+        // Reset and apply new background class
+        liveToastEl.className = 'toast'; // Reset classes
+        liveToastEl.classList.add(bgColor);
+        
+        // Show the toast
+        toastBootstrap.show();
+    }
+</script>
+</body>
+</html>

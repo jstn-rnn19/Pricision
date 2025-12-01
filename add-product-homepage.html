@@ -1,0 +1,119 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricision - Add Product Homepage</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"
+  />
+  <link rel="icon" href="images/Submark 1.png" />
+  <link rel="stylesheet" href="css/homepage/navbar.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-color fixed-top bg-dark">
+        <div class="container">
+        <a class="navbar-brand" href="homepage.html">
+            <img src="images/Secondary 1.png" alt="Logo" style="height: 40px; width: auto;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav nav-underline">
+            
+            <li class="nav-item"><a class="nav-link-grow" href="homepage.html">Home</a></li>
+            
+            <li class="nav-item dropdown">
+            <a class="nav-link-grow-drop dropdown-toggle active" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Products
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="productsDropdown">
+                <li><a class="dropdown-item" href="add-product-homepage.html">Add New Product</a></li>
+                <li><a class="dropdown-item" href="edit-product.html">Edit Product Details/Recipe</a></li>
+            </ul>
+            </li>
+    
+            <li class="nav-item dropdown">
+            <a class="nav-link-grow-drop dropdown-toggle" href="#" id="materialsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Materials
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="materialsDropdown">
+                <li><a class="dropdown-item" href="add-material.html">Add New Material</a></li>
+                <li><a class="dropdown-item" href="manage-materials.html">Manage Material Costs</a></li>
+            </ul>
+            </li>
+    
+            <li class="nav-item">
+            <a class="nav-link-grow" href="manage.html">Dashboard</a>
+            </li>
+            
+            <li class="nav-item dropdown">
+            <a class="nav-link-grow-drop dropdown-toggle" href="#" id="helpDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Help
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="helpDropdown">
+                <li><a class="dropdown-item" href="homepage.html#how-pricision-works">How Pricision Works</a></li>
+                <li><a class="dropdown-item" href="homepage.html#aboutus">About Us</a></li>
+                <li><a class="dropdown-item" href="homepage.html#terms">Terms & Terminology</a></li>
+                <li><a class="dropdown-item" href="homepage.html#step-by-step">Step by Step</a></li>
+                <li><a class="dropdown-item" href="homepage.html#developer">Developers</a></li>
+            </ul>
+            </li>
+            
+        </ul>
+        </div>
+    </div>
+    </nav>
+</header>
+
+<section class="productHomepage container d-flex justify-content-center align-items-start bg-white ">
+  <form action="#" class="addProductHomepage text-center">
+    
+    <h2 class="mb-4">Select Product Costing Method</h2>
+    <p>Choose the method for defining your product's cost structure.</p>
+
+    <button type="button" id="addProductBtn" class="btn btn-primary add-product-btn">
+      Continue to Add Simple Product (Cost of Ingredient/Material Entry)
+    </button>
+
+    <button id="goAddRecipe" type="button" class="btn btn-success add-recipe-product-btn">
+      Continue to Add Recipe Product (Ingredients/Packaging)
+    </button>
+
+  </form>
+</section>
+
+
+<footer class="text-center py-3 footer-bg text-white add-product-footer">
+  <div class="container">
+    <p class="mb-0">© 2025 Pricision. All rights reserved.</p>
+    <a href="privacy.html" class="btn privacy-color btn-link">Privacy Policy</a>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Simple product flow (redirects to add product details)
+  document.getElementById("addProductBtn").addEventListener("click", function () {
+    // Note: For a "Simple Product," you would eventually redirect to a page 
+    // that accepts a single COGS number, not a recipe builder. 
+    // For now, redirecting to the initial product data entry.
+    window.location.href = "add-product.html"; 
+  });
+
+  // Recipe product flow (redirects to add product details, which then routes to recipe)
+  document.getElementById("goAddRecipe").addEventListener("click", function () {
+    // This correctly starts the recipe flow by collecting product details first.
+    window.location.href = "edit-product.html"; 
+  });
+</script>
+
+
+</body>
+</html>

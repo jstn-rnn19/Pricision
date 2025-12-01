@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricision - Product Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/Submark 1.png">
+    <link rel="stylesheet" href="css/homepage/navbar.css">
+    <link rel="stylesheet" href="css/main.css">
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-color fixed-top bg-dark">
+                <div class="container">
+                <a class="navbar-brand" href="homepage.html">
+                    <img src="images/Secondary 1.png" alt="Logo" style="height: 40px; width: auto;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav nav-underline">
+                    
+                    <li class="nav-item"><a class="nav-link-grow" href="homepage.html">Home</a></li>
+                    
+                    <li class="nav-item dropdown">
+                    <a class="nav-link-grow-drop dropdown-toggle active" href="add-product-homepage.html" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Products
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="productsDropdown">
+                        <li><a class="dropdown-item" href="add-product-homepage.html">Add New Product</a></li>
+                        <li><a class="dropdown-item" href="edit-product.html">Edit Product Details/Recipe</a></li>
+                    </ul>
+                    </li>
+            
+                    <li class="nav-item dropdown">
+                    <a class="nav-link-grow-drop dropdown-toggle" href="#" id="materialsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Materials
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="materialsDropdown">
+                        <li><a class="dropdown-item" href="add-material.html">Add New Material</a></li>
+                        <li><a class="dropdown-item" href="manage-materials.html">Manage Material Costs</a></li>
+                    </ul>
+                    </li>
+            
+                    <li class="nav-item">
+                    <a class="nav-link-grow" href="manage.html">Dashboard</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                    <a class="nav-link-grow-drop dropdown-toggle" href="#" id="helpDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Help
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="helpDropdown">
+                        <li><a class="dropdown-item" href="homepage.html#how-pricision-works">How Pricision Works</a></li>
+                        <li><a class="dropdown-item" href="homepage.html#aboutus">About Us</a></li>
+                        <li><a class="dropdown-item" href="homepage.html#terms">Terms & Terminology</a></li>
+                        <li><a class="dropdown-item" href="homepage.html#step-by-step">Step by Step</a></li>
+                        <li><a class="dropdown-item" href="homepage.html#developer">Developers</a></li>
+                    </ul>
+                    </li>
+                    
+                </ul>
+                </div>
+            </div>
+            </nav>
+        </header>
+    <div class="container py-5">
+        <h2 class="mb-4 custom-top"><span id="pageTitle">Add New Product</span> Details</h2>
+        <form id="productForm" class="row g-3">
+            <input type="hidden" id="productId" value="">
+
+            <div class="col-md-6">
+                <label for="productName" class="form-label">Product Name</label>
+                <input type="text" id="productName" class="form-control"  required placeholder="Example: Kangkong Chips">
+            </div>
+            <div class="col-md-6">
+                <label for="priceMethod" class="form-label">Pricing Method </label>
+                <select id="priceMethod" class="form-select" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="profitMargin">Profit Margin (Target % of Selling Price)</option>
+                    <option value="markUp">Mark Up (Target % of Cost)</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="productMargin" class="form-label">Desired Margin/Markup (%)</label>
+                <input type="number" id="productMargin" class="form-control" min="0" step="0.1" required placeholder="Example: 30%">
+            </div>
+            <div class="col-12">
+                <label for="productDesc" class="form-label">Description (Optional)</label>
+                <textarea id="productDesc" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" id="submitBtn" class="btn btn-primary">Save & Continue to Recipe</button>
+                <a href="manage.html" class="btn btn-outline-secondary">View List</a>
+            </div>
+        </form>
+        <div id="alertBox" class="alert d-none mt-3" role="alert"></div>
+    </div>
+    <footer class="text-center py-3 footer-bg text-white add-product1-footer">
+        <div class="container">
+            <p class="mb-0">© 2025 Pricision. All rights reserved.</p>
+            <a href="privacy.html" class="btn privacy-color btn-link">Privacy Policy</a>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const productForm = document.getElementById('productForm');
+        const alertBox = document.getElementById('alertBox');
+        const submitBtn = document.getElementById('submitBtn');
+        const pageTitle = document.getElementById('pageTitle');
+        const hiddenProductId = document.getElementById('productId');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const editId = urlParams.get('edit');
+
+        if (editId) {
+            pageTitle.textContent = 'Edit Product';
+            submitBtn.textContent = 'Update & View Recipe';
+            loadProductForEditing(editId);
+        } else {
+            pageTitle.textContent = 'Add New Product';
+        }
+
+        function loadProductForEditing(id) {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const product = products.find(p => String(p.id) === String(id));
+            
+            if (product) {
+                hiddenProductId.value = product.id;
+                document.getElementById('productName').value = product.name;
+                document.getElementById('priceMethod').value = product.priceMethod;
+                document.getElementById('productMargin').value = product.productMargin;
+                document.getElementById('productDesc').value = product.desc;
+            }
+        }
+
+        productForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('productName').value.trim();
+            const priceMethod = document.getElementById('priceMethod').value.trim();
+            const productMargin = document.getElementById('productMargin').value.trim();
+            const desc = document.getElementById('productDesc').value.trim();
+
+            if (!name || !priceMethod || !productMargin) {
+            showAlert('Please fill in all required fields.', 'danger');
+            return;
+            }
+
+            let products = JSON.parse(localStorage.getItem('products')) || [];
+            let currentId = hiddenProductId.value; 
+
+            if (currentId) {
+                // EDIT LOGIC
+                const index = products.findIndex(p => String(p.id) === String(currentId));
+                if (index !== -1) {
+                    products[index] = { ...products[index], name, priceMethod, productMargin, desc };
+                    showAlert('Product updated successfully!', 'success');
+                }
+            } else {
+                // ADD LOGIC
+                currentId = Date.now();
+                const newProduct = { id: currentId, name, priceMethod, productMargin, desc };
+                products.push(newProduct);
+                showAlert('Product added successfully!', 'success');
+            }
+            
+            localStorage.setItem('products', JSON.stringify(products));
+            localStorage.setItem('currentProductId', currentId);
+            
+            setTimeout(() => {
+                // Redirect to the recipe builder page
+                window.location.href = `add-recipe-details.html?id=${currentId}`;
+            }, 800);
+        });
+        
+        function showAlert(msg, type){
+        alertBox.className = 'alert alert-' + type;
+        alertBox.textContent = msg;
+        alertBox.classList.remove('d-none');
+        setTimeout(() => alertBox.classList.add('d-none'), 3000);
+        }
+    </script>
+    </body>
+</html>

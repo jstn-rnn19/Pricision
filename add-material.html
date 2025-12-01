@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pricision - Add Ingredient / Material</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+    <link rel="icon" href="images/Submark 1.png" />
+    <link rel="stylesheet" href="css/homepage/navbar.css" />
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+    
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000">
+            <div class="toast-header">
+                <strong class="me-auto" id="toastHeader">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastBody">
+                </div>
+        </div>
+    </div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-color fixed-top bg-dark">
+            <div class="container">
+            <a class="navbar-brand" href="homepage.html">
+                <img src="images/Secondary 1.png" alt="Logo" style="height: 40px; width: auto;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav nav-underline">
+                
+                <li class="nav-item"><a class="nav-link-grow" href="homepage.html">Home</a></li>
+                
+                <li class="nav-item dropdown">
+                <a class="nav-link-grow-drop dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Products
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="productsDropdown">
+                    <li><a class="dropdown-item" href="add-product-homepage.html">Add New Product</a></li>
+                    <li><a class="dropdown-item" href="edit-product.html">Edit Product Details/Recipe</a></li>
+                </ul>
+                </li>
+        
+                <li class="nav-item dropdown">
+                <a class="nav-link-grow-drop dropdown-toggle active" href="#" id="materialsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Materials
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="materialsDropdown">
+                    <li><a class="dropdown-item" href="add-material.html">Add New Material</a></li>
+                    <li><a class="dropdown-item" href="manage-materials.html">Manage Material Costs</a></li>
+                </ul>
+                </li>
+        
+                <li class="nav-item">
+                <a class="nav-link-grow" href="manage.html">Dashboard</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                <a class="nav-link-grow-drop dropdown-toggle" href="#" id="helpDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Help
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="helpDropdown">
+                    <li><a class="dropdown-item" href="homepage.html#how-pricision-works">How Pricision Works</a></li>
+                    <li><a class="dropdown-item" href="homepage.html#aboutus">About Us</a></li>
+                    <li><a class="dropdown-item" href="homepage.html#terms">Terms & Terminology</a></li>
+                    <li><a class="dropdown-item" href="homepage.html#step-by-step">Step by Step</a></li>
+                    <li><a class="dropdown-item" href="homepage.html#developer">Developers</a></li>
+                </ul>
+                </li>
+                
+            </ul>
+            </div>
+        </div>
+        </nav>
+    </header>
+
+    <div class="container py-5">
+        <h3 class="mb-4 custom-top">Global Material Inventory</h3>
+        <h2 class="mb-4">Add Raw Material (Ingredient or Packaging)</h2>
+        
+        <form id="addFormMaterial" class="row g-3 form">
+            <div class="col-md-6">
+                <label for="materialName" class="form-label">Ingredient/Material Name</label>
+                <input type="text" id="materialName" class="form-control" required placeholder="Example: Kangkong Leaves, Foil Bag, etc."/>
+            </div>
+            <div class="col-md-6">
+                <label for="supplier" class="form-label">Supplier (Optional)</label>
+                <input type="text" id="supplier" class="form-control" placeholder="Supplier or Store Name" />
+            </div>
+            <div class="col-md-6">
+                <label for="purchasePrice" class="form-label">Purchase Price (₱) per Pack</label>
+                <input type="number" id="purchasePrice" class="form-control" min="0" step="0.01" placeholder="0" required />
+            </div>
+            <div class="col-md-6">
+                <label for="shippingFee" class="form-label">Shipping Fee(₱)</label>
+                <input type="number" id="shippingFee" class="form-control" min="0" step="0.01" placeholder="0" required />
+            </div>
+            <div class="col-md-6">
+                <label for="qtyPerPack" class="form-label">Net Wt./Quantity per Pack (Base Unit)</label>
+                <input type="number" id="qtyPerPack" class="form-control" min="1" step="0.01" placeholder="0"  required />
+            </div>
+            <div class="col-md-6">
+                <label for="units" class="form-label">Base Unit Type (Used in Recipe)</label>
+                <select id="units" class="form-select" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="gram">Grams (g)</option>
+                    <option value="kilogram">Kilograms (kg)</option>
+                    <option value="ounce">Ounces (oz)</option>
+                    <option value="pound">Pounds (lbs)</option>
+                    <option value="milliliter">Milliliters (ml)</option>
+                    <option value="liter">Liters (l)</option>
+                    <option value="teaspoon">Teaspoons (tsp)</option>
+                    <option value="tablespoon">Tablespoons (tbsp)</option>
+                    <option value="piece">Pieces</option>
+                    <option value="unit">Units</option>
+                    <option value="head">Heads</option>
+                    <option value="slice">Slices</option>
+                    <option value="pack">Packs</option>
+                    <option value="bag">Bags</option>
+                    <option value="box">Boxes</option>
+                    <option value="centimeter">Centimeters (cm)</option>
+                    <option value="meter">Meter (m)</option>
+                    <option value="inch">Inches (in)</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <button type="submit" id="materialSubmitBtn" class="btn btn-success">Save Material</button>
+                <a href="manage-materials.html" class="btn btn-outline-info">Manage Materials</a>
+                <a href="#" id="goToRecipeBtn" class="btn btn-primary d-none">Go to Recipe Builder</a>
+            </div>
+        </form>
+    </div>
+    <footer class="text-center py-3 footer-bg text-white add-product1-footer">
+        <div class="container">
+            <p class="mb-0">© 2025 Pricision. All rights reserved.</p>
+            <a href="privacy.html" class="btn privacy-color btn-link">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+<script>
+    const materialForm = document.getElementById("addFormMaterial");
+    const goToRecipeBtn = document.getElementById("goToRecipeBtn");
+    
+    // --- TOAST SETUP ---
+    const liveToastEl = document.getElementById('liveToast');
+    const toastHeaderEl = document.getElementById('toastHeader');
+    const toastBodyEl = document.getElementById('toastBody');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(liveToastEl);
+
+    function showToast(message, isError = false) {
+        toastHeaderEl.textContent = isError ? 'Input Error' : 'Success';
+        toastBodyEl.textContent = message;
+        
+        liveToastEl.classList.remove('text-bg-success', 'text-bg-danger');
+        liveToastEl.classList.add(isError ? 'text-bg-danger' : 'text-bg-success');
+
+        toastBootstrap.show();
+    }
+    // --- END TOAST SETUP ---
+
+
+    const productId = localStorage.getItem("currentProductId");
+
+    if (productId) {
+        goToRecipeBtn.classList.remove('d-none');
+        goToRecipeBtn.href = `edit-product.html`;
+    } else {
+        goToRecipeBtn.classList.add('d-none');
+    }
+
+    materialForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("materialName").value.trim();
+        const supplier = document.getElementById("supplier").value.trim();
+        const shippingFee = parseFloat(document.getElementById("shippingFee").value.trim()) || 0;
+        const purchasePrice = parseFloat(document.getElementById("purchasePrice").value.trim());
+        const qtyPerPack = parseFloat(document.getElementById("qtyPerPack").value.trim());
+        const units = document.getElementById("units").value.trim();
+        
+        // Validation check for required fields
+        if (!name || !purchasePrice || !qtyPerPack || !units) {
+            showToast("Please fill in all required fields.", true); // true for error
+            return;
+        }
+        
+        // UNIT COST CALCULATION
+        const totalPackCost = purchasePrice + shippingFee;
+        const unitCost = totalPackCost / qtyPerPack;
+
+        const material = {
+            id: Date.now(),
+            name,
+            supplier,
+            shippingFee,
+            purchasePrice,
+            qtyPerPack,
+            units,
+            unitCost: parseFloat(unitCost.toFixed(4)),
+        };
+
+        const materials = JSON.parse(localStorage.getItem("materials")) || [];
+        materials.push(material);
+        localStorage.setItem("materials", JSON.stringify(materials));
+
+        showToast(`Material "${name}" added successfully! Unit Cost: ₱${unitCost.toFixed(4)} per ${units}`, false); // false for success
+        materialForm.reset();
+    });
+
+</script>
+</body>
+</html>

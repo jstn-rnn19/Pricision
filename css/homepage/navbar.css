@@ -1,0 +1,168 @@
+.navbar-color {
+  background-color: #0b0829 !important;
+  padding-bottom: 0;
+}
+
+/* Mobile toggler with visible icon, transparent background and white border */
+.navbar .navbar-toggler {
+  background-color: transparent !important;
+  border: 2px solid white;
+  border-radius: 0.25rem;
+  box-shadow: none !important;
+}
+
+.navbar {
+  padding-bottom: 8px;
+}
+
+
+
+
+/* Remove background on hover, focus, active, collapsed states */
+.navbar .navbar-toggler:hover,
+.navbar .navbar-toggler:focus,
+.navbar .navbar-toggler:active,
+.navbar .navbar-toggler.collapsed {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Use Bootstrap's built-in dark toggler icon and make it brighter */
+.navbar-dark .navbar-toggler-icon {
+  filter: brightness(1.5);
+}
+
+/* Optional: your custom hamburger icon override */
+.navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+
+.navbar .navbar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link-grow {
+  display: inline-block;
+  position: relative;
+  color: #FDF5E6 !important;
+  padding: 8px 15px !important;
+  margin: 0 5px;
+  text-decoration: none;
+}
+.nav-link-grow-drop {
+  display: inline-block;
+  position: relative;
+  color: #FDF5E6 !important;
+  padding: 8px 15px !important;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+.nav-link-grow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: #77C9D4;
+  transition: width 0.3s ease-out;
+}
+.nav-link-grow-drop::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #0b0829;
+  transition: width 0.3s ease-out;
+}
+
+.nav-link-grow:hover,
+.nav-link-grow:focus {
+  color: #77C9D4 !important;
+}
+.nav-link-grow-drop:hover,
+.nav-link-grow-drop:focus {
+  color: #77C9D4 !important;
+}
+
+
+.nav-link-grow:hover::after {
+  width: 100%;
+}
+.nav-link-grow-drop:hover::after,
+.nav-link-grow-drop:focus::after {
+  width: 100%;
+}
+
+
+.nav-link-grow.active {
+  color: #F0A500 !important;
+}
+.nav-link-grow-drop.active {
+  color: #F0A500 !important;
+}
+
+.nav-link-grow.active::after {
+  width: 100%;
+}
+.nav-link-grow-drop.active::after {
+  width: 100%;
+}
+
+.dropdown-menu-dark .dropdown-item {
+  color: #FDF5E6;
+}
+
+.dropdown-menu-dark .dropdown-item:hover,
+.dropdown-menu-dark .dropdown-item.active {
+  background-color: rgba(119, 201, 212, 0.2);
+  color: #77C9D4 !important;
+}
+
+
+
+.navbar img {
+  height: 40px;
+  width: auto;
+  margin: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 30px;
+  margin: 0;
+}
+
+.footer-bg {
+  background-color: #0b0829;
+}
+
+.privacy-color  {
+  text-decoration: none;
+  color: #F0A500;
+  padding-bottom: 0px;
+}
+
+.privacy-color:hover {
+  text-decoration: underline;
+  color: #77C9D4;
+}
+.add-product-footer {
+  margin-top: 280px;
+}
+.add-product1-footer {
+  margin-top: 300px;
+}
+.add-recipe-footer {
+  margin-top: 64px;
+}
+.manage-material-footer {
+  margin-top: 100px;
+}
+.manage {
+  height: 76vh;
+}

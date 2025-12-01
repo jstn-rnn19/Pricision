@@ -1,0 +1,29 @@
+#recipeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.recipe-card {
+  flex: 1 1 calc(33.333% - 1rem);
+  min-width: 280px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .recipe-card {
+    flex: 1 1 100%;
+  }
+}
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  color: #dc3545;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
